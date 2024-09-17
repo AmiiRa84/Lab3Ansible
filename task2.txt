@@ -1,0 +1,38 @@
+---
+- name: Create directory structure and manage permissions
+  hosts: all  # Apply to all hosts defined in the inventory file
+  become: yes  # Run tasks with elevated privileges
+  tasks:
+    - name: Create parent directory
+      file:
+        path: /path/to/parent_dir
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Create subdirectory 1
+      file:
+        path: /path/to/parent_dir/subdir1
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Create subdirectory 2
+      file:
+        path: /path/to/parent_dir/subdir2
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Ensure specific file is absent in subdir1
+      file:
+        path: /path/to/parent_dir/subdir1/specific_file.txt
+        state: absent
+
+    - name: Ensure specific file is absent in subdir2
+      file:
+        path: /path/to/parent_dir/subdir2/specific_file.txt
+        state: absent

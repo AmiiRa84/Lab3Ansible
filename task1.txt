@@ -1,0 +1,10 @@
+---
+- name: Start httpd service on all nodes
+  hosts: all  # Targets all hosts defined in the inventory file
+  become: yes  # Runs the tasks with elevated privileges
+  tasks:
+    - name: Ensure httpd service is started
+      service:
+        name: httpd
+        state: started
+        enabled: yes
